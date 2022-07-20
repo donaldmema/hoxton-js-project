@@ -125,7 +125,6 @@ function renderMainPage() {
 
   let featureCardImg = document.createElement("img");
   featureCardImg.src = "./src/assets/images/identity-feature.png";
-
 }
 
 // <main class="main">
@@ -167,3 +166,132 @@ function renderMainPage() {
 //           </div>
 //         </section>
 //       </main>
+
+function renderFooter() {
+  let footerEl = document.createElement("footer");
+  footerEl.className = "footer";
+
+  let sidebarEl = document.createElement("aside");
+  sidebarEl.className = "footer__sidebar";
+
+  let sidebarDescEl = document.createElement("div");
+  sidebarDescEl.className = "footer__sedebar__text";
+
+  let sidebarTextPEl = document.createElement("h2");
+  sidebarTextPEl.textContent = "Looking.com";
+
+  let sidebarText1PEl = document.createElement("h3");
+  sidebarText1PEl.textContent = "In good hands with us!";
+
+  let sidebarSocialsEl = document.createElement("div");
+  sidebarSocialsEl.className = "footer__sidebar__socials";
+
+  let sidebarText2PEl = document.createElement("h4");
+  sidebarText2PEl.textContent = "Stay connected";
+
+  let socialsContainer = document.createElement("div");
+  socialsContainer.className = "socials-container";
+
+  let socialsLink = document.createElement("a");
+  socialsLink.setAttribute("https://www.facebook.com/", "#");
+  
+
+ let socialsImg = document.createElement("img");
+  socialsImg.src = "./src/assets/images/facebook-logo.png";
+
+  let socialsLink1 = document.createElement("a")
+  socialsLink1.setAttribute("https://www.instagram.com/", "#")
+
+ let socialsImg1 = document.createElement("img")
+  socialsImg1.src = "./src/assets/images/instagram-logo.png"
+ 
+}
+
+//<footer class="footer">
+//       <aside class="footer__sidebar">
+//         <div class="footer__sidebar__text">
+//           <h2>Looking.com</h2>
+//           <h3>In good hands with us!</h3>
+//         </div>
+
+//         <div class="footer__sidebar__socials">
+//          <h4>Stay connected</h4>
+//
+//           <div class="socials-container">
+//             <a href="https://www.facebook.com/" target="_blank">
+//               <img
+//                 src="./src/assets/images/facebook-logo.png"
+//                 alt="facebook logo"
+//               />
+//             </a>
+//
+//             <a href="https://www.instagram.com/" target="_blank">
+//                <img
+//                  src="./src/assets/images/instagram-logo.png"
+//                  alt="instagram logo"
+//               />
+//              </a>
+
+//              <a href="https://www.twitter.com/" target="_blank">
+//                <img
+//                  src="./src/assets/images/twitter-logo.png"
+//                  alt="twitter logo"
+//                />
+//              </a>
+//
+//             <a href="https://www.youtube.com/" target="_blank">
+//                <img
+//                  src="./src/assets/images/youtube-logo.png"
+//                  alt="youtube logo"
+//                />
+//              </a>
+//            </div>
+//         </div>
+//        </aside>
+//
+//        <div class="footer__navigation-container">
+//         <div class="footer__nav-menus-section">
+//           <div class="footer__nav-menu">
+//              <h3>Explore</h3>
+//              <nav>
+//                <ul>
+//                  <a href="#"><li>Home</li></a>
+//                  <a href="#"><li>Services</li></a>
+//                </ul>
+//              </nav>
+//            </div>
+
+//           <div class="footer__nav-menu">
+//              <h3>About Us</h3>
+//         <nav>
+//               <ul>
+//                 <a href=""><li>Careers</li></a>
+//                 <a href=""><li>Company</li></a>
+//               </ul>
+//             </nav>
+//           </div>
+
+//           <div class="footer__nav-menu">
+//             <h3>Help Center</h3>
+//             <nav>
+//               <ul>
+//                 <a href=""><li>Support</li></a>
+//                 <a href=""><li>Contact Us</li></a>
+//               </ul>
+//             </nav>
+//           </div>
+//         </div>
+//         <div class="footer__bottom-notes">
+//           <nav class="legal-notes">
+//             <ul class="legal-notes__items">
+//               <a href=""><li>Terms Of Use</li></a>
+//               <a href=""><li>Privacy</li></a>
+//               <a href=""><li>Cookies</li></a>
+//               <a href=""><li>Refund Policy</li></a>
+//               <a href=""><li>FAQ</li></a>
+//             </ul>
+//           </nav>
+//           <p>&copy; 2022 Looking.com LLC. All rights reserved.</p>
+//         </div>
+//       </div>
+//     </footer>

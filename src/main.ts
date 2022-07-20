@@ -9,9 +9,10 @@ let state = {
   properties: [
     {
       id: 1,
+      propertyName: "John's Guesthouse",
       location: "Tirana",
-      pricePerNight: 15.99,
       image: "image.jpg",
+      price: 15.99,
       availableDates: ["27/07/2022", "28/07/2022", "29/07/2022"],
     },
   ],

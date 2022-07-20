@@ -8,11 +8,293 @@
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  /* text-align: center; */
   color: #2c3e50;
 }
+
+/* This is the header section */
 
 .header {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  align-items: center;
+  place-items: center;
+  padding: 1rem;
+  background-color: #00a2db;
+  color: #fff;
+}
+
+.header h1 {
+  font-family: "Merienda";
+  font-size: 24px;
+}
+
+.sign-btn {
+  background-color: #00a2db;
+  color: #fff;
+  font-weight: 600;
+  border: 2px solid #fff;
+  padding: 0.3rem 1rem;
+  margin-left: 1rem;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: 200ms;
+}
+
+.sign-btn:hover {
+  background-color: #fff;
+  color: #00a2db;
+}
+
+/* This is the main section */
+
+.main {
+  display: grid;
+}
+
+.landing-page__renter-section {
+  height: 30vh;
+  display: grid;
+  gap: 1rem;
+  place-content: center;
+  padding-right: 27vw;
+  color: #fff;
+
+  background-image: linear-gradient(rgba(0, 0, 0, 0.527), rgba(0, 0, 0, 0.5)),
+    url(./assets/images/realestate.png);
+  background-position: center;
+  background-size: cover;
+}
+
+.landing-page__renter-section,
+.landing-page__landlord-section p {
+  font-weight: 600;
+}
+
+.landing-page__renter-section h2 {
+  font-weight: 600;
+  font-size: 2.2rem;
+}
+
+.renter-section__search-btn input {
+  background-color: #fff;
+  padding: 0.3rem 1rem;
+  border-radius: 15px;
+  height: 30px;
+  border: transparent;
+  transition: 200ms;
+  font-size: 1rem;
+}
+
+.renter-section__search-btn input:focus {
+  outline: none;
+  box-shadow: 1px 1px 1px 0.5px #00a2db;
+}
+
+.renter-section__search-btn button {
+  background-color: #fff;
+  color: #00a2db;
+  font-weight: 600;
+  border: 2px solid #fff;
+  padding: 0.3rem 1rem;
+  margin-left: 0.5rem;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: 200ms;
+}
+
+.renter-section__search-btn button:hover {
+  color: #ff337a;
+  box-shadow: 1px 1px 1px 0.5px #ff337a;
+}
+
+.landing-page__landlord-section {
+  height: 30vh;
+  display: grid;
+  gap: 1rem;
+  place-content: center end;
+  padding-right: 20vw;
+  justify-items: end;
+  color: #fff;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.527), rgba(0, 0, 0, 0.5)),
+    url(./assets/images/commercial-property.jpg);
+  background-position: center 80%;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.landing-page__landlord-section h2 {
+  font-weight: 600;
+  font-size: 2.2rem;
+}
+
+.landing-page__landlord-section button {
+  background-color: #fff;
+  height: 30px;
+  color: #00a2db;
+  font-weight: 600;
+  font-size: 15px;
+  border: 2px solid #fff;
+  padding: 0.3rem 1rem;
+  margin-left: 0.5rem;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: 200ms;
+}
+
+.landing-page__landlord-section button:hover {
+  color: #ff337a;
+  box-shadow: 1px 1px 1px 0.5px #ff337a;
+}
+
+.landing-page__description-section {
+  display: grid;
+  place-content: center;
+  align-items: center;
+  height: 50vh;
+  background-color: #f2f7fa;
+  gap: 3rem;
+}
+
+.landing-page__description-section h3 {
+  text-align: center;
+  font-weight: 600;
+  font-size: 2.2rem;
+}
+
+.features {
+  display: grid;
+  grid-auto-flow: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.feature-card {
+  width: 370px;
+  overflow-wrap: normal;
+  display: grid;
+  gap: 1.5rem;
+  place-items: center;
+  text-align: center;
+}
+
+.feature-card h4 {
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+
+/* This is the footer section */
+
+.footer {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: 2fr 7fr;
+  height: 250px;
+  background-color: #392f5a;
+  color: #6494aa;
+}
+
+.footer__sidebar {
+  display: grid;
+  align-content: space-between;
+  grid-template-rows: 1fr auto;
+  border-right: 1px solid #6494aa;
+}
+
+.footer__sidebar__text {
+  display: grid;
+  place-content: center;
+  place-items: center;
+  gap: 1rem;
+  padding: 10px;
+}
+
+.footer__sidebar__text h2 {
+  font-size: 30px;
+  filter: brightness(1.2);
+}
+
+.footer__sidebar__text h3 {
+  font-size: 16px;
+  filter: brightness(1.2);
+}
+
+.footer__sidebar__socials {
+  display: grid;
+  place-content: center;
+  place-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem;
+  border-top: 1px solid #6494aa;
+  margin: 0px 40px;
+}
+
+.footer__sidebar__socials a {
+  text-decoration: none;
+}
+
+.footer__sidebar__socials a:hover {
+  filter: contrast(1.4);
+}
+
+.socials-container img {
+  width: 30px;
+}
+
+.footer__navigation-container {
+  display: grid;
+  align-content: space-between;
+  padding: 10px 0px;
+  grid-template-rows: 1fr auto;
+}
+
+.footer__nav-menus-section {
+  display: grid;
+  grid-auto-flow: column;
+  place-content: center;
+  gap: 5rem;
+}
+
+.footer__nav-menu {
+  display: grid;
+  place-content: center;
+  gap: 1rem;
+}
+
+.footer__nav-menu h3 {
+  font-size: 22px;
+  filter: brightness(1.1);
+}
+
+.footer__nav-menu li {
+  font-size: 16px;
+}
+
+.footer__bottom-notes {
+  display: grid;
+  place-items: center;
+  gap: 0.7rem;
+  padding: 0.8rem;
+  border-top: 1px solid #6494aa;
+  margin: 0px 40px;
+}
+
+.legal-notes__items {
+  display: grid;
+  grid-auto-flow: column;
+  place-content: center;
+  gap: 2rem;
+}
+
+.footer__navigation-container a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.footer__navigation-container li {
+  list-style: none;
+}
+
+.footer__navigation-container li:hover {
+  filter: brightness(1.5);
 }

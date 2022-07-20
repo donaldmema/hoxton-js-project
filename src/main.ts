@@ -194,82 +194,57 @@ function renderFooter() {
 
   let socialsLink = document.createElement("a");
   socialsLink.setAttribute("https://www.facebook.com/", "#");
-  
 
- let socialsImg = document.createElement("img");
+  let socialsImg = document.createElement("img");
   socialsImg.src = "./src/assets/images/facebook-logo.png";
 
-  let socialsLink1 = document.createElement("a")
-  socialsLink1.setAttribute("https://www.instagram.com/", "#")
+  let socialsLink1 = document.createElement("a");
+  socialsLink1.setAttribute("https://www.instagram.com/", "#");
 
- let socialsImg1 = document.createElement("img")
-  socialsImg1.src = "./src/assets/images/instagram-logo.png"
- 
+  let socialsImg1 = document.createElement("img");
+  socialsImg1.src = "./src/assets/images/instagram-logo.png";
+
+  let socialsLink2 = document.createElement("a");
+  socialsLink2.setAttribute("https://www.twitter.com/", "#");
+
+  let socialsImg2 = document.createElement("img");
+  socialsImg2.src = "./src/assets/images/twitter-logo.png";
+
+  let socialsLink3 = document.createElement("a");
+  socialsLink3.setAttribute("https://www.youtube.com/", "#");
+
+  let socialsImg3 = document.createElement("img");
+  socialsImg3.src = "./src/assets/images/youtube-logo.png";
+
+  let footerNavigationContainer = document.createElement("div");
+  footerNavigationContainer.className = "footer__navigation-container";
+
+  let footerNavMenuSection = document.createElement("div");
+  footerNavMenuSection.className = "footer__nav-menus-section";
+
+  let footerNavMenu = document.createElement("div");
+  footerNavMenu.className = "footer__nav-menu";
+
+  let explore = document.createElement("h3");
+  explore.textContent = "Explore";
+
+  let footerUl1 = document.createElement("ul");
+  footerUl1.className = "ul";
+
+  let footerLink1 = document.createElement("a");
+  footerLink1.setAttribute("#", "Home");
+
+  let footerLink2 = document.createElement("a");
+  footerLink2.setAttribute("#", "Services");
+
+  let footerNavMenuu = document.createElement("div");
+  footerNavMenuu.className = "footer__nav-menu";
+
+  let help = document.createElement("h3");
+  help.textContent = "Help Center";
 }
 
 //<footer class="footer">
-//       <aside class="footer__sidebar">
-//         <div class="footer__sidebar__text">
-//           <h2>Looking.com</h2>
-//           <h3>In good hands with us!</h3>
-//         </div>
-
-//         <div class="footer__sidebar__socials">
-//          <h4>Stay connected</h4>
-//
-//           <div class="socials-container">
-//             <a href="https://www.facebook.com/" target="_blank">
-//               <img
-//                 src="./src/assets/images/facebook-logo.png"
-//                 alt="facebook logo"
-//               />
-//             </a>
-//
-//             <a href="https://www.instagram.com/" target="_blank">
-//                <img
-//                  src="./src/assets/images/instagram-logo.png"
-//                  alt="instagram logo"
-//               />
-//              </a>
-
-//              <a href="https://www.twitter.com/" target="_blank">
-//                <img
-//                  src="./src/assets/images/twitter-logo.png"
-//                  alt="twitter logo"
-//                />
-//              </a>
-//
-//             <a href="https://www.youtube.com/" target="_blank">
-//                <img
-//                  src="./src/assets/images/youtube-logo.png"
-//                  alt="youtube logo"
-//                />
-//              </a>
-//            </div>
-//         </div>
-//        </aside>
-//
-//        <div class="footer__navigation-container">
-//         <div class="footer__nav-menus-section">
-//           <div class="footer__nav-menu">
-//              <h3>Explore</h3>
-//              <nav>
-//                <ul>
-//                  <a href="#"><li>Home</li></a>
-//                  <a href="#"><li>Services</li></a>
-//                </ul>
-//              </nav>
-//            </div>
-
-//           <div class="footer__nav-menu">
-//              <h3>About Us</h3>
-//         <nav>
-//               <ul>
-//                 <a href=""><li>Careers</li></a>
-//                 <a href=""><li>Company</li></a>
-//               </ul>
-//             </nav>
-//           </div>
 
 //           <div class="footer__nav-menu">
 //             <h3>Help Center</h3>

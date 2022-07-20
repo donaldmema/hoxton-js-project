@@ -46,6 +46,13 @@
   color: #00a2db;
 }
 
+.header-account {
+  display: grid;
+  grid-auto-flow: column;
+  align-items: center;
+  /* justify-content: flex-end; */
+}
+
 /* This is the main section */
 
 .main {

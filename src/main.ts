@@ -125,45 +125,56 @@ function renderMainPage() {
 
   let featureCardImg = document.createElement("img");
   featureCardImg.src = "./src/assets/images/identity-feature.png";
+  featureCardImg.alt = "";
 
+  let cardTitle = document.createElement("h4");
+  cardTitle.textContent = "Verified identities";
+
+  let cardDescription = document.createElement("p");
+  cardDescription.textContent =
+    "Users can verify identity through multiple sources so you can search with confidence! Our proprietary fraud detection tool helps keep out the spam.️";
+
+  featureCard.append(featureCardImg, cardTitle, cardDescription);
+
+  let featureCard1 = document.createElement("article");
+  featureCard1.className = "feature-card";
+
+  let featureCardImg1 = document.createElement("img");
+  featureCardImg1.src = "./src/assets/images/match-feature.png";
+  featureCardImg1.alt = "";
+
+  let cardTitle1 = document.createElement("h4");
+  cardTitle1.textContent = "A perfect match";
+
+  let cardDescription1 = document.createElement("p");
+  cardDescription1.textContent =
+    "Create your personal profile and get started in minutes! Get specific with things like pet preferences, room features, neighborhood details, and more.";
+
+  featureCard1.append(featureCardImg1, cardTitle1, cardDescription1);
+
+  let featureCard2 = document.createElement("article");
+  featureCard2.className = "feature-card";
+
+  let featureCardImg2 = document.createElement("img");
+  featureCardImg2.src = "./src/assets/images/third-feature.png";
+  featureCardImg2.alt = "";
+
+  let cardTitle2 = document.createElement("h4");
+  cardTitle2.textContent = "Great for landlords";
+
+  let cardDescription2 = document.createElement("p");
+  cardDescription2.textContent =
+    " Keep track of your properties all in one place. Just list your properties and let the app do the rest and notify you for potential renters. Also enjoy the built-in profit tracker feature.";
+
+  featureCard2.append(featureCardImg2, cardTitle2, cardDescription2);
+
+  featuresDiv.append(featureCard, featureCard1, featureCard2);
+
+  descriptionSection.append(descriptionSectionH3El, featuresDiv);
+
+  mainEl.append(renterSection, landlordSection, descriptionSection);
+
+  app.append(mainEl);
 }
 
-// <main class="main">
-//         <section class="landing-page__renter-section">
-//         </section>
-//         <section class="landing-page__landlord-section">
-//         </section>
-//         <section class="landing-page__description-section">
-//           <h3>Why use Looking.com?</h3>
-//           <div class="features">
-//             <article class="feature-card">
-//               <img src="./src/assets/images/identity-feature.png" alt="" />
-//               <h4>Verified identities</h4>
-//               <p>
-//                 Users can verify identity through multiple sources so you can
-//                 search with confidence! Our proprietary fraud detection tool
-//                 helps keep out the spam.️
-//               </p>
-//             </article>
-//             <article class="feature-card">
-//               <img src="./src/assets/images/match-feature.png" alt="" />
-//               <h4>A perfect match</h4>
-//               <p>
-//                 Create your personal profile and get started in minutes! Get
-//                 specific with things like pet preferences, room features,
-//                 neighborhood details, and more.
-//               </p>
-//             </article>
-//             <article class="feature-card">
-//               <img src="./src/assets/images/third-feature.png" alt="" />
-//               <h4>Great for landlords</h4>
-//               <p>
-//                 Keep track of your properties all in one place. Just list your
-//                 properties and let the app do the rest and notify you for
-//                 potential renters. Also enjoy the built-in profit tracker
-//                 feature.
-//               </p>
-//             </article>
-//           </div>
-//         </section>
-//       </main>
+renderMainPage();

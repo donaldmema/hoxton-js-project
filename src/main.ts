@@ -9,9 +9,10 @@ let state = {
   properties: [
     {
       id: 1,
+      propertyName: "John's Guesthouse",
       location: "Tirana",
-      pricePerNight: 15.99,
       image: "image.jpg",
+      price: 15.99,
       availableDates: ["27/07/2022", "28/07/2022", "29/07/2022"],
     },
   ],
@@ -178,3 +179,107 @@ function renderMainPage() {
 }
 
 renderMainPage();
+
+function renderFooter() {
+  let footerEl = document.createElement("footer");
+  footerEl.className = "footer";
+
+  let sidebarEl = document.createElement("aside");
+  sidebarEl.className = "footer__sidebar";
+
+  let sidebarDescEl = document.createElement("div");
+  sidebarDescEl.className = "footer__sedebar__text";
+
+  let sidebarTextPEl = document.createElement("h2");
+  sidebarTextPEl.textContent = "Looking.com";
+
+  let sidebarText1PEl = document.createElement("h3");
+  sidebarText1PEl.textContent = "In good hands with us!";
+
+  let sidebarSocialsEl = document.createElement("div");
+  sidebarSocialsEl.className = "footer__sidebar__socials";
+
+  let sidebarText2PEl = document.createElement("h4");
+  sidebarText2PEl.textContent = "Stay connected";
+
+  let socialsContainer = document.createElement("div");
+  socialsContainer.className = "socials-container";
+
+  let socialsLink = document.createElement("a");
+  socialsLink.setAttribute("https://www.facebook.com/", "#");
+
+  let socialsImg = document.createElement("img");
+  socialsImg.src = "./src/assets/images/facebook-logo.png";
+
+  let socialsLink1 = document.createElement("a");
+  socialsLink1.setAttribute("https://www.instagram.com/", "#");
+
+  let socialsImg1 = document.createElement("img");
+  socialsImg1.src = "./src/assets/images/instagram-logo.png";
+
+  let socialsLink2 = document.createElement("a");
+  socialsLink2.setAttribute("https://www.twitter.com/", "#");
+
+  let socialsImg2 = document.createElement("img");
+  socialsImg2.src = "./src/assets/images/twitter-logo.png";
+
+  let socialsLink3 = document.createElement("a");
+  socialsLink3.setAttribute("https://www.youtube.com/", "#");
+
+  let socialsImg3 = document.createElement("img");
+  socialsImg3.src = "./src/assets/images/youtube-logo.png";
+
+  let footerNavigationContainer = document.createElement("div");
+  footerNavigationContainer.className = "footer__navigation-container";
+
+  let footerNavMenuSection = document.createElement("div");
+  footerNavMenuSection.className = "footer__nav-menus-section";
+
+  let footerNavMenu = document.createElement("div");
+  footerNavMenu.className = "footer__nav-menu";
+
+  let explore = document.createElement("h3");
+  explore.textContent = "Explore";
+
+  let footerUl1 = document.createElement("ul");
+  footerUl1.className = "ul";
+
+  let footerLink1 = document.createElement("a");
+  footerLink1.setAttribute("#", "Home");
+
+  let footerLink2 = document.createElement("a");
+  footerLink2.setAttribute("#", "Services");
+
+  let footerNavMenuu = document.createElement("div");
+  footerNavMenuu.className = "footer__nav-menu";
+
+  let help = document.createElement("h3");
+  help.textContent = "Help Center";
+}
+
+//<footer class="footer">
+
+//           <div class="footer__nav-menu">
+//             <h3>Help Center</h3>
+//             <nav>
+//               <ul>
+//                 <a href=""><li>Support</li></a>
+//                 <a href=""><li>Contact Us</li></a>
+//               </ul>
+//             </nav>
+//           </div>
+//         </div>
+//         <div class="footer__bottom-notes">
+//           <nav class="legal-notes">
+//             <ul class="legal-notes__items">
+//               <a href=""><li>Terms Of Use</li></a>
+//               <a href=""><li>Privacy</li></a>
+//               <a href=""><li>Cookies</li></a>
+//               <a href=""><li>Refund Policy</li></a>
+//               <a href=""><li>FAQ</li></a>
+//             </ul>
+//           </nav>
+//           <p>&copy; 2022 Looking.com LLC. All rights reserved.</p>
+//         </div>
+//       </div>
+//     </footer>

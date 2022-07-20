@@ -3,6 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Merienda"
+      rel="stylesheet"
+    />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite App</title>
   </head>
@@ -11,8 +16,8 @@
       <header class="header">
         <h1>Looking.com</h1>
         <div class="header-btns">
-          <button>SIGN IN</button>
-          <button>SIGN UP</button>
+          <button class="sign-btn">SIGN IN</button>
+          <button class="sign-btn">SIGN UP</button>
         </div>
       </header>
       <main class="main">
@@ -63,7 +68,94 @@
           </div>
         </section>
       </main>
-      <footer class="footer"></footer>
+      <footer class="footer">
+        <aside class="footer__sidebar">
+          <div class="footer__sidebar__text">
+            <h2>Looking.com</h2>
+            <h3>In good hands with us!</h3>
+          </div>
+
+          <div class="footer__sidebar__socials">
+            <h4>Stay connected</h4>
+
+            <div class="socials-container">
+              <a href="https://www.facebook.com/" target="_blank">
+                <img
+                  src="./src/assets/images/facebook-logo.png"
+                  alt="facebook logo"
+                />
+              </a>
+
+              <a href="https://www.instagram.com/" target="_blank">
+                <img
+                  src="./src/assets/images/instagram-logo.png"
+                  alt="instagram logo"
+                />
+              </a>
+
+              <a href="https://www.twitter.com/" target="_blank">
+                <img
+                  src="./src/assets/images/twitter-logo.png"
+                  alt="twitter logo"
+                />
+              </a>
+
+              <a href="https://www.youtube.com/" target="_blank">
+                <img
+                  src="./src/assets/images/youtube-logo.png"
+                  alt="youtube logo"
+                />
+              </a>
+            </div>
+          </div>
+        </aside>
+
+        <div class="footer__navigation-container">
+          <div class="footer__nav-menus-section">
+            <div class="footer__nav-menu">
+              <h3>Explore</h3>
+              <nav>
+                <ul>
+                  <a href="#"><li>Home</li></a>
+                  <a href="#"><li>Services</li></a>
+                </ul>
+              </nav>
+            </div>
+
+            <div class="footer__nav-menu">
+              <h3>About Us</h3>
+              <nav>
+                <ul>
+                  <a href=""><li>Careers</li></a>
+                  <a href=""><li>Company</li></a>
+                </ul>
+              </nav>
+            </div>
+
+            <div class="footer__nav-menu">
+              <h3>Help Center</h3>
+              <nav>
+                <ul>
+                  <a href=""><li>Support</li></a>
+                  <a href=""><li>Contact Us</li></a>
+                </ul>
+              </nav>
+            </div>
+          </div>
+          <div class="footer__bottom-notes">
+            <nav class="legal-notes">
+              <ul class="legal-notes__items">
+                <a href=""><li>Terms Of Use</li></a>
+                <a href=""><li>Privacy</li></a>
+                <a href=""><li>Cookies</li></a>
+                <a href=""><li>Refund Policy</li></a>
+                <a href=""><li>FAQ</li></a>
+              </ul>
+            </nav>
+            <p>&copy; 2022 Looking.com LLC. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
     </div>
     <script type="module" src="/src/main.ts"></script>
   </body>

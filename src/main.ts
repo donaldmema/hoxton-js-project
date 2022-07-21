@@ -3,22 +3,39 @@ import "./style.css";
 const app = document.querySelector<HTMLDivElement>("#app")!;
 // Main page > Search Results Page > Sign Up Page > Sign in window
 
-let state = {
+type property = {
+  id: number;
+  propertyName: string;
+  location: string;
+  image: string;
+  price: number;
+  availableDates: [];
+};
+
+type State = {
+  propreties: property[];
+  page: "home" | "search" | "singUp";
+  modal: "signIn" | "";
+  user: "landlord" | "renter" | "";
+};
+
+let state: State = {
   page: "home",
-  user: null,
-  properties: [
+  user: "",
+  modal: "",
+  propreties: [
     {
       id: 1,
       propertyName: "John's Guesthouse",
       location: "Tirana",
       image: "image.jpg",
       price: 15.99,
-      availableDates: ["27/07/2022", "28/07/2022", "29/07/2022"],
+      availableDates: [],
     },
   ],
 };
 
-function renderHeader() {
+function renderHeader(app: Element) {
   let headerEl = document.createElement("header");
   headerEl.className = "header";
 
@@ -32,6 +49,9 @@ function renderHeader() {
     let headerLoginBtn = document.createElement("button");
     headerLoginBtn.className = "sign-btn";
     headerLoginBtn.textContent = "SIGN IN";
+    headerLoginBtn.addEventListener("click", function () {
+      console.log("clicked");
+    });
 
     let headerSignUpBtn = document.createElement("button");
     headerSignUpBtn.className = "sign-btn";
@@ -62,9 +82,8 @@ function renderHeader() {
   }
 }
 
-renderHeader();
 
-function renderMainPage() {
+function renderMainPage(app: Element) {
   let mainEl = document.createElement("main");
   mainEl.className = "main";
 
@@ -168,7 +187,7 @@ function renderMainPage() {
 //         </section>
 //       </main>
 
-function renderFooter() {
+function renderFooter(app: Element) {
   let footerEl = document.createElement("footer");
   footerEl.className = "footer";
 
@@ -195,17 +214,15 @@ function renderFooter() {
 
   let socialsLink = document.createElement("a");
   socialsLink.setAttribute("https://www.facebook.com/", "#");
-  
 
- let socialsImg = document.createElement("img");
+  let socialsImg = document.createElement("img");
   socialsImg.src = "./src/assets/images/facebook-logo.png";
 
-  let socialsLink1 = document.createElement("a")
-  socialsLink1.setAttribute("https://www.instagram.com/", "#")
+  let socialsLink1 = document.createElement("a");
+  socialsLink1.setAttribute("https://www.instagram.com/", "#");
 
- let socialsImg1 = document.createElement("img")
-  socialsImg1.src = "./src/assets/images/instagram-logo.png"
- 
+  let socialsImg1 = document.createElement("img");
+  socialsImg1.src = "./src/assets/images/instagram-logo.png";
 }
 
 //<footer class="footer">
@@ -296,3 +313,17 @@ function renderFooter() {
 //         </div>
 //       </div>
 //     </footer>
+
+function render() {
+  let app = document.querySelector<HTMLElement>("#app");
+  if (app === null) return;
+  app.textContent = "";
+
+  renderHeader(app);
+
+  if (state.page === "home") renderMainPage(app);
+  if (state.page === "search") renderSearchPage(app);
+  if (state.page === "singUp") renderSignUpPage(app);
+}
+
+render();

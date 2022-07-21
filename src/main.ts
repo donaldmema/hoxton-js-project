@@ -14,7 +14,7 @@ type property = {
 
 type State = {
   propreties: property[];
-  page: "home" | "search" | "singUp";
+  page: "home" | "search" | "signUp";
   modal: "signIn" | "";
   user: "landlord" | "renter" | "";
 };
@@ -76,12 +76,18 @@ function renderHeader(app: Element) {
     headerLogoutBtn.className = "sign-btn";
     headerLogoutBtn.textContent = "LOGOUT";
 
-    headerUserSection.append(headerUserImg, headerUserName, headerLogoutBtn);
+    let signInButton = document.createElement("button")
+    signInButton.textContent = "Sign In"
+    signInButton.addEventListener("click", function () {
+      state.modal = "signIn"
+      render()
+    })
+
+    headerUserSection.append(headerUserImg, headerUserName, headerLogoutBtn, signInButton);
     headerEl.append(headerTitleEl, headerUserSection);
     app.append(headerEl);
   }
 }
-
 
 function renderMainPage(app: Element) {
   let mainEl = document.createElement("main");
@@ -197,7 +203,46 @@ function renderMainPage(app: Element) {
   app.append(mainEl);
 }
 
-renderMainPage();
+function renderSignModal(app: Element) {
+  let wrapperEl = document.createElement("div");
+  wrapperEl.className = "modal-wrapper";
+
+  let containerEl = document.createElement("div");
+  containerEl.className = "modal-container";
+
+  let closeButton = document.createElement("button");
+  closeButton.textContent = "X";
+  closeButton.className = "modal-close-button";
+  closeButton.addEventListener("click", function () {
+    state.modal = "";
+    render();
+  });
+
+  let titleEl = document.createElement("h2");
+  titleEl.textContent = "Sign In";
+
+  let formEl = document.createElement("form");
+  formEl.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    state.modal = "";
+    render();
+  });
+
+  let emailEl = document.createElement("input");
+  emailEl.type = "email";
+  emailEl.placeholder = "Enter your email";
+  emailEl.required = true;
+
+  let passwordEl = document.createElement("input");
+  passwordEl.type = "password";
+  passwordEl.placeholder = "Enter your password";
+  passwordEl.required = true;
+
+  containerEl.append(closeButton, titleEl, formEl);
+  wrapperEl.append(containerEl);
+  app.append(wrapperEl);
+}
 
 function renderFooter(app: Element) {
   let footerEl = document.createElement("footer");
@@ -312,7 +357,9 @@ function render() {
 
   if (state.page === "home") renderMainPage(app);
   if (state.page === "search") renderSearchPage(app);
-  if (state.page === "singUp") renderSignUpPage(app);
+  if (state.page === "signUp") renderSignUpPage(app);
+
+  if (state.modal === "signIn") renderSignModal(app);
 }
 
 render();

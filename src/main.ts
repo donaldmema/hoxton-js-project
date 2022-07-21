@@ -16,12 +16,12 @@ type State = {
   propreties: property[];
   page: "home" | "search" | "signUp";
   modal: "signIn" | "";
-  user: "landlord" | "renter" | "";
+  user: "landlord" | "renter" | null;
 };
 
 let state: State = {
   page: "home",
-  user: "",
+  user: null,
   modal: "",
   propreties: [
     {
@@ -35,7 +35,7 @@ let state: State = {
   ],
 };
 
-function renderHeader(app: Element) {
+function renderHeader() {
   let headerEl = document.createElement("header");
   headerEl.className = "header";
 
@@ -50,8 +50,9 @@ function renderHeader(app: Element) {
     headerLoginBtn.className = "sign-btn";
     headerLoginBtn.textContent = "SIGN IN";
     headerLoginBtn.addEventListener("click", function () {
-      console.log("clicked");
-    });
+        state.modal = "signIn"
+        render()
+      })
 
     let headerSignUpBtn = document.createElement("button");
     headerSignUpBtn.className = "sign-btn";
@@ -76,6 +77,7 @@ function renderHeader(app: Element) {
     headerLogoutBtn.className = "sign-btn";
     headerLogoutBtn.textContent = "LOGOUT";
 
+<<<<<<< HEAD
     let signInButton = document.createElement("button");
     signInButton.textContent = "Sign In";
     signInButton.addEventListener("click", function () {
@@ -89,12 +91,15 @@ function renderHeader(app: Element) {
       headerLogoutBtn,
       signInButton
     );
+=======
+    headerUserSection.append(headerUserImg, headerUserName, headerLogoutBtn);
+>>>>>>> 2a7e2de8470a4f7d068b341813c8100ec6246287
     headerEl.append(headerTitleEl, headerUserSection);
     app.append(headerEl);
   }
 }
 
-function renderMainPage(app: Element) {
+function renderMainPage() {
   let mainEl = document.createElement("main");
   mainEl.className = "main";
 
@@ -208,7 +213,7 @@ function renderMainPage(app: Element) {
   app.append(mainEl);
 }
 
-function renderSignModal(app: Element) {
+function renderSignModal() {
   let wrapperEl = document.createElement("div");
   wrapperEl.className = "modal-wrapper";
 
@@ -250,7 +255,7 @@ function renderSignModal(app: Element) {
   app.append(wrapperEl);
 }
 
-function renderFooter(app: Element) {
+function renderFooter() {
   let footerEl = document.createElement("footer");
   footerEl.className = "footer";
 
@@ -415,17 +420,17 @@ function renderFooter(app: Element) {
 }
 
 function render() {
-  let app = document.querySelector<HTMLElement>("#app");
   if (app === null) return;
   app.textContent = "";
 
-  renderHeader(app);
+  renderHeader();
+  renderFooter();
 
-  if (state.page === "home") renderMainPage(app);
+  if (state.page === "home") renderMainPage();
   if (state.page === "search") renderSearchPage(app);
   if (state.page === "signUp") renderSignUpPage(app);
 
-  if (state.modal === "signIn") renderSignModal(app);
+  if (state.modal === "signIn") renderSignModal();
 }
 
 render();

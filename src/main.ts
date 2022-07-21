@@ -76,14 +76,19 @@ function renderHeader(app: Element) {
     headerLogoutBtn.className = "sign-btn";
     headerLogoutBtn.textContent = "LOGOUT";
 
-    let signInButton = document.createElement("button")
-    signInButton.textContent = "Sign In"
+    let signInButton = document.createElement("button");
+    signInButton.textContent = "Sign In";
     signInButton.addEventListener("click", function () {
-      state.modal = "signIn"
-      render()
-    })
+      state.modal = "signIn";
+      render();
+    });
 
-    headerUserSection.append(headerUserImg, headerUserName, headerLogoutBtn, signInButton);
+    headerUserSection.append(
+      headerUserImg,
+      headerUserName,
+      headerLogoutBtn,
+      signInButton
+    );
     headerEl.append(headerTitleEl, headerUserSection);
     app.append(headerEl);
   }
@@ -239,7 +244,7 @@ function renderSignModal(app: Element) {
   passwordEl.placeholder = "Enter your password";
   passwordEl.required = true;
 
-  formEl.append(emailEl, passwordEl)
+  formEl.append(emailEl, passwordEl);
   containerEl.append(closeButton, titleEl, formEl);
   wrapperEl.append(containerEl);
   app.append(wrapperEl);
@@ -261,11 +266,15 @@ function renderFooter(app: Element) {
   let sidebarText1PEl = document.createElement("h3");
   sidebarText1PEl.textContent = "In good hands with us!";
 
+  sidebarDescEl.append(sidebarTextPEl, sidebarText1PEl);
+
   let sidebarSocialsEl = document.createElement("div");
   sidebarSocialsEl.className = "footer__sidebar__socials";
 
   let sidebarText2PEl = document.createElement("h4");
   sidebarText2PEl.textContent = "Stay connected";
+
+  sidebarSocialsEl.append(sidebarText2PEl);
 
   let socialsContainer = document.createElement("div");
   socialsContainer.className = "socials-container";
@@ -276,11 +285,15 @@ function renderFooter(app: Element) {
   let socialsImg = document.createElement("img");
   socialsImg.src = "./src/assets/images/facebook-logo.png";
 
+  socialsLink.append(socialsImg);
+
   let socialsLink1 = document.createElement("a");
   socialsLink1.setAttribute("https://www.instagram.com/", "#");
 
   let socialsImg1 = document.createElement("img");
   socialsImg1.src = "./src/assets/images/instagram-logo.png";
+
+  socialsLink1.append(socialsImg1);
 
   let socialsLink2 = document.createElement("a");
   socialsLink2.setAttribute("https://www.twitter.com/", "#");
@@ -288,11 +301,21 @@ function renderFooter(app: Element) {
   let socialsImg2 = document.createElement("img");
   socialsImg2.src = "./src/assets/images/twitter-logo.png";
 
+  socialsLink2.append(socialsImg2);
+
   let socialsLink3 = document.createElement("a");
   socialsLink3.setAttribute("https://www.youtube.com/", "#");
 
   let socialsImg3 = document.createElement("img");
   socialsImg3.src = "./src/assets/images/youtube-logo.png";
+
+  socialsLink3.append(socialsImg3);
+  socialsContainer.append(
+    socialsLink,
+    socialsLink1,
+    socialsLink2,
+    socialsLink3
+  );
 
   let footerNavigationContainer = document.createElement("div");
   footerNavigationContainer.className = "footer__navigation-container";
@@ -310,44 +333,86 @@ function renderFooter(app: Element) {
   footerUl1.className = "ul";
 
   let footerLink1 = document.createElement("a");
-  footerLink1.setAttribute("#", "Home");
+  footerLink1.setAttribute("href", "#");
+  footerLink1.textContent = "Home";
 
   let footerLink2 = document.createElement("a");
-  footerLink2.setAttribute("#", "Services");
+  footerLink2.setAttribute("href", "#");
+  footerLink2.textContent = "services";
+
+  footerNavMenuSection.append(footerNavMenu);
+  footerNavMenu.append(explore, footerUl1);
+  footerUl1.append(footerLink1, footerLink2);
 
   let footerNavMenuu = document.createElement("div");
   footerNavMenuu.className = "footer__nav-menu";
 
   let help = document.createElement("h3");
   help.textContent = "Help Center";
+
+  let footerUl2 = document.createElement("ul");
+  footerUl2.className = "ul";
+
+  let footerSupportEl = document.createElement("a");
+  footerSupportEl.setAttribute("href", "#");
+  footerSupportEl.textContent = "Support";
+
+  let footerContactEl = document.createElement("a");
+  footerContactEl.setAttribute("href", "#");
+  footerContactEl.textContent = "Contact Us";
+
+  footerNavMenuu.append(help, footerUl2, footerSupportEl, footerContactEl);
+  footerUl2.append(footerSupportEl, footerContactEl);
+  footerNavigationContainer.append(
+    footerNavMenuSection,
+    footerNavMenu,
+    footerNavMenuu
+  );
+
+  let footerBottonNotes = document.createElement("div");
+  footerBottonNotes.className = "footer__bottom-notes";
+
+  let legalNotes = document.createElement("nav");
+  legalNotes.className = "legal-notes";
+
+  let legalNotesItems = document.createElement("ul");
+  legalNotesItems.className = "legal-notes__items";
+
+  let footerLink3 = document.createElement("a");
+  footerLink3.setAttribute("href", "#");
+  footerLink3.textContent = "Terms Of Use";
+
+  let footerLink4 = document.createElement("a");
+  footerLink4.setAttribute("href", "#");
+  footerLink4.textContent = "Privacy";
+
+  let footerLink5 = document.createElement("a");
+  footerLink5.setAttribute("href", "#");
+  footerLink5.textContent = "Cookies";
+
+  let footerLink6 = document.createElement("a");
+  footerLink6.setAttribute("href", "#");
+  footerLink6.textContent = "Refund Policy";
+
+  let footerLink7 = document.createElement("a");
+  footerLink7.setAttribute("href", "#");
+  footerLink7.textContent = "FAQ";
+
+  let footerText = document.createElement("p");
+  footerText.textContent = "&copy; 2022 Looking.com LLC. All rights reserved.";
+
+  footerBottonNotes.append(legalNotes, legalNotesItems, footerText);
+  legalNotes.append(legalNotesItems, footerText);
+  legalNotesItems.append(
+    footerLink3,
+    footerLink4,
+    footerLink5,
+    footerLink6,
+    footerLink7
+  );
+
+  render();
 }
-
-//<footer class="footer">
-
-//           <div class="footer__nav-menu">
-//             <h3>Help Center</h3>
-//             <nav>
-//               <ul>
-//                 <a href=""><li>Support</li></a>
-//                 <a href=""><li>Contact Us</li></a>
-//               </ul>
-//             </nav>
-//           </div>
-//         </div>
-//         <div class="footer__bottom-notes">
-//           <nav class="legal-notes">
-//             <ul class="legal-notes__items">
-//               <a href=""><li>Terms Of Use</li></a>
-//               <a href=""><li>Privacy</li></a>
-//               <a href=""><li>Cookies</li></a>
-//               <a href=""><li>Refund Policy</li></a>
-//               <a href=""><li>FAQ</li></a>
-//             </ul>
-//           </nav>
-//           <p>&copy; 2022 Looking.com LLC. All rights reserved.</p>
-//         </div>
-//       </div>
-//     </footer>
 
 function render() {
   let app = document.querySelector<HTMLElement>("#app");

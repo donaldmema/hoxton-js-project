@@ -10,6 +10,7 @@ type property = {
   image: string;
   price: number;
   availableDates: [];
+  owner: string | "";
 };
 
 type State = {
@@ -31,6 +32,7 @@ let state: State = {
       image: "image.jpg",
       price: 15.99,
       availableDates: [],
+      owner: "Bob",
     },
   ],
 };
@@ -50,9 +52,9 @@ function renderHeader() {
     headerLoginBtn.className = "sign-btn";
     headerLoginBtn.textContent = "SIGN IN";
     headerLoginBtn.addEventListener("click", function () {
-        state.modal = "signIn"
-        render()
-      })
+      state.modal = "signIn";
+      render();
+    });
 
     let headerSignUpBtn = document.createElement("button");
     headerSignUpBtn.className = "sign-btn";
@@ -251,7 +253,7 @@ function renderFooter() {
   sidebarEl.className = "footer__sidebar";
 
   let sidebarDescEl = document.createElement("div");
-  sidebarDescEl.className = "footer__sedebar__text";
+  sidebarDescEl.className = "footer__sidebar__text";
 
   let sidebarTextPEl = document.createElement("h2");
   sidebarTextPEl.textContent = "Looking.com";
@@ -272,43 +274,48 @@ function renderFooter() {
   let socialsContainer = document.createElement("div");
   socialsContainer.className = "socials-container";
 
-  let socialsLink = document.createElement("a");
-  socialsLink.setAttribute("https://www.facebook.com/", "#");
-
-  let socialsImg = document.createElement("img");
-  socialsImg.src = "./src/assets/images/facebook-logo.png";
-
-  socialsLink.append(socialsImg);
-
   let socialsLink1 = document.createElement("a");
-  socialsLink1.setAttribute("https://www.instagram.com/", "#");
-
-  let socialsImg1 = document.createElement("img");
-  socialsImg1.src = "./src/assets/images/instagram-logo.png";
-
-  socialsLink1.append(socialsImg1);
+  socialsLink1.href = `https://www.facebook.com/`;
+  socialsLink1.target = "_blank";
+  socialsLink1.innerHTML = `<img
+  src="./src/assets/images/facebook-logo.png"
+  alt="facebook logo"
+/>`;
 
   let socialsLink2 = document.createElement("a");
-  socialsLink2.setAttribute("https://www.twitter.com/", "#");
-
-  let socialsImg2 = document.createElement("img");
-  socialsImg2.src = "./src/assets/images/twitter-logo.png";
-
-  socialsLink2.append(socialsImg2);
+  socialsLink2.href = `https://www.instagram.com/`;
+  socialsLink2.target = "_blank";
+  socialsLink2.innerHTML = `<img
+  src="./src/assets/images/instagram-logo.png"
+  alt="instagram logo"
+/>`;
 
   let socialsLink3 = document.createElement("a");
-  socialsLink3.setAttribute("https://www.youtube.com/", "#");
+  socialsLink3.href = `https://www.twitter.com/`;
+  socialsLink3.target = "_blank";
+  socialsLink3.innerHTML = `<img
+  src="./src/assets/images/twitter-logo.png"
+  alt="twitter logo"
+/>`;
 
-  let socialsImg3 = document.createElement("img");
-  socialsImg3.src = "./src/assets/images/youtube-logo.png";
+  let socialsLink4 = document.createElement("a");
+  socialsLink4.href = `https://www.youtube.com/`;
+  socialsLink4.target = "_blank";
+  socialsLink4.innerHTML = `<img
+  src="./src/assets/images/youtube-logo.png"
+  alt="youtube logo"
+/>`;
 
-  socialsLink3.append(socialsImg3);
   socialsContainer.append(
-    socialsLink,
     socialsLink1,
     socialsLink2,
-    socialsLink3
+    socialsLink3,
+    socialsLink4
   );
+
+  sidebarSocialsEl.append(sidebarText2PEl, socialsContainer);
+
+  sidebarEl.append(sidebarDescEl, sidebarSocialsEl);
 
   let footerNavigationContainer = document.createElement("div");
   footerNavigationContainer.className = "footer__navigation-container";
@@ -316,93 +323,125 @@ function renderFooter() {
   let footerNavMenuSection = document.createElement("div");
   footerNavMenuSection.className = "footer__nav-menus-section";
 
-  let footerNavMenu = document.createElement("div");
-  footerNavMenu.className = "footer__nav-menu";
+  let footerNavMenuDiv1 = document.createElement("div");
+  footerNavMenuDiv1.className = "footer__nav-menu";
 
   let explore = document.createElement("h3");
   explore.textContent = "Explore";
 
+  let footerNavMenu1 = document.createElement("nav");
+
   let footerUl1 = document.createElement("ul");
-  footerUl1.className = "ul";
 
   let footerLink1 = document.createElement("a");
-  footerLink1.setAttribute("href", "#");
-  footerLink1.textContent = "Home";
+  footerLink1.href = "";
+  footerLink1.innerHTML = "<li>Home</li>";
 
   let footerLink2 = document.createElement("a");
-  footerLink2.setAttribute("href", "#");
-  footerLink2.textContent = "services";
+  footerLink2.href = "";
+  footerLink2.innerHTML = "<li>Services</li>";
 
-  footerNavMenuSection.append(footerNavMenu);
-  footerNavMenu.append(explore, footerUl1);
   footerUl1.append(footerLink1, footerLink2);
+  footerNavMenu1.append(footerUl1);
+  footerNavMenuDiv1.append(explore, footerNavMenu1);
 
-  let footerNavMenuu = document.createElement("div");
-  footerNavMenuu.className = "footer__nav-menu";
+  let footerNavMenuDiv2 = document.createElement("div");
+  footerNavMenuDiv2.className = "footer__nav-menu";
 
-  let help = document.createElement("h3");
-  help.textContent = "Help Center";
+  let aboutUs = document.createElement("h3");
+  aboutUs.textContent = "About Us";
+
+  let footerNavMenu2 = document.createElement("nav");
 
   let footerUl2 = document.createElement("ul");
-  footerUl2.className = "ul";
-
-  let footerSupportEl = document.createElement("a");
-  footerSupportEl.setAttribute("href", "#");
-  footerSupportEl.textContent = "Support";
-
-  let footerContactEl = document.createElement("a");
-  footerContactEl.setAttribute("href", "#");
-  footerContactEl.textContent = "Contact Us";
-
-  footerNavMenuu.append(help, footerUl2, footerSupportEl, footerContactEl);
-  footerUl2.append(footerSupportEl, footerContactEl);
-  footerNavigationContainer.append(
-    footerNavMenuSection,
-    footerNavMenu,
-    footerNavMenuu
-  );
-
-  let footerBottonNotes = document.createElement("div");
-  footerBottonNotes.className = "footer__bottom-notes";
-
-  let legalNotes = document.createElement("nav");
-  legalNotes.className = "legal-notes";
-
-  let legalNotesItems = document.createElement("ul");
-  legalNotesItems.className = "legal-notes__items";
 
   let footerLink3 = document.createElement("a");
-  footerLink3.setAttribute("href", "#");
-  footerLink3.textContent = "Terms Of Use";
+  footerLink3.href = "";
+  footerLink3.innerHTML = "<li>Careers</li>";
 
   let footerLink4 = document.createElement("a");
-  footerLink4.setAttribute("href", "#");
-  footerLink4.textContent = "Privacy";
+  footerLink4.href = "";
+  footerLink4.innerHTML = "<li>Company</li>";
+
+  footerUl2.append(footerLink3, footerLink4);
+  footerNavMenu2.append(footerUl2);
+  footerNavMenuDiv2.append(aboutUs, footerNavMenu2);
+
+  let footerNavMenuDiv3 = document.createElement("div");
+  footerNavMenuDiv3.className = "footer__nav-menu";
+
+  let helpCenter = document.createElement("h3");
+  helpCenter.textContent = "Help Center";
+
+  let footerNavMenu3 = document.createElement("nav");
+
+  let footerUl3 = document.createElement("ul");
 
   let footerLink5 = document.createElement("a");
-  footerLink5.setAttribute("href", "#");
-  footerLink5.textContent = "Cookies";
+  footerLink5.href = "";
+  footerLink5.innerHTML = "<li>Support</li>";
 
   let footerLink6 = document.createElement("a");
-  footerLink6.setAttribute("href", "#");
-  footerLink6.textContent = "Refund Policy";
+  footerLink6.href = "";
+  footerLink6.innerHTML = "<li>Contact Us</li>";
 
-  let footerLink7 = document.createElement("a");
-  footerLink7.setAttribute("href", "#");
-  footerLink7.textContent = "FAQ";
+  footerUl3.append(footerLink5, footerLink6);
+  footerNavMenu3.append(footerUl3);
+  footerNavMenuDiv3.append(helpCenter, footerNavMenu3);
 
-  let footerText = document.createElement("p");
-  footerText.textContent = "&copy; 2022 Looking.com LLC. All rights reserved.";
-
-  footerBottonNotes.append(legalNotes, legalNotesItems, footerText);
-  legalNotes.append(legalNotesItems, footerText);
-  legalNotesItems.append(
-    footerLink3,
-    footerLink4,
-    footerLink5,
-    footerLink6,
-    footerLink7
+  footerNavMenuSection.append(
+    footerNavMenuDiv1,
+    footerNavMenuDiv2,
+    footerNavMenuDiv3
   );
+
+  let footerBottomNotesDiv = document.createElement("div");
+  footerBottomNotesDiv.className = "footer__bottom-notes";
+
+  let legalNotesNav = document.createElement("nav");
+  legalNotesNav.className = "legal-notes";
+
+  let legalNotesUl = document.createElement("ul");
+  legalNotesUl.className = "legal-notes__items";
+
+  let legalNoteAEl1 = document.createElement("a");
+  legalNoteAEl1.href = "";
+  legalNoteAEl1.innerHTML = "<li>Terms of Use</li>";
+
+  let legalNoteAEl2 = document.createElement("a");
+  legalNoteAEl2.href = "";
+  legalNoteAEl2.innerHTML = "<li>Privacy</li>";
+
+  let legalNoteAEl3 = document.createElement("a");
+  legalNoteAEl3.href = "";
+  legalNoteAEl3.innerHTML = "<li>Cookies</li>";
+
+  let legalNoteAEl4 = document.createElement("a");
+  legalNoteAEl4.href = "";
+  legalNoteAEl4.innerHTML = "<li>Refund Policy</li>";
+
+  let legalNoteAEl5 = document.createElement("a");
+  legalNoteAEl5.href = "";
+  legalNoteAEl5.innerHTML = "<li>FAQ</li>";
+
+  let copyrightPEl = document.createElement("p");
+  copyrightPEl.textContent = "© 2022 Looking.com LLC. All rights reserved.";
+
+  legalNotesUl.append(
+    legalNoteAEl1,
+    legalNoteAEl2,
+    legalNoteAEl3,
+    legalNoteAEl4,
+    legalNoteAEl5
+  );
+  legalNotesNav.append(legalNotesUl);
+  footerBottomNotesDiv.append(legalNotesNav, copyrightPEl);
+
+  footerNavigationContainer.append(footerNavMenuSection, footerBottomNotesDiv);
+
+  footerEl.append(sidebarEl, footerNavigationContainer);
+
+  app.append(footerEl);
 }
 
 function render() {

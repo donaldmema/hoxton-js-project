@@ -29,6 +29,35 @@
   font-size: 24px;
 }
 
+.modal-wrapper {
+  display: grid;
+  place-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.310);
+  backdrop-filter: blur(4px);
+  padding: 2rem;
+}
+
+.modal-container {
+  background-color: white;
+  padding: 2rem 3rem;
+  position: relative;
+  border-radius: 6px;
+}
+
+.modal-close-button {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  border-radius: 40%;
+  height: 18px;
+  width: 18px;
+}
+
 .sign-btn {
   background-color: #00a2db;
   color: #fff;

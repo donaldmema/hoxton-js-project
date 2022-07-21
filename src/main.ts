@@ -199,6 +199,10 @@ function renderMainPage() {
   app.append(mainEl);
 }
 
+// renderSignUpPage() {
+
+// }
+
 function renderSignModal() {
   let wrapperEl = document.createElement("div");
   wrapperEl.className = "modal-wrapper";
@@ -445,13 +449,14 @@ function render() {
   app.textContent = "";
 
   renderHeader();
-
+  
   if (state.page === "home") renderMainPage();
   if (state.page === "search") renderSearchPage();
   if (state.page === "signUp") renderSignUpPage();
 
   if (state.modal === "signIn") renderSignModal();
-  renderFooter();
+
+  renderFooter()
 }
 
 render();

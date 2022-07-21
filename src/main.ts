@@ -1,7 +1,7 @@
 import "./style.css";
 
 const app = document.querySelector<HTMLDivElement>("#app")!;
-// Main page > Search Results Page > Sign Up Page > Sign in window
+// Main page✅ > Search Results Page > Sign Up Page > Sign in window
 
 type property = {
   id: number;
@@ -32,7 +32,7 @@ let state: State = {
       image: "image.jpg",
       price: 15.99,
       availableDates: [],
-      owner: "Bob",
+      owner: "BradAKlima@armyspy.com",
     },
   ],
 };
@@ -447,8 +447,8 @@ function render() {
   renderHeader();
 
   if (state.page === "home") renderMainPage();
-  // if (state.page === "search") renderSearchPage(app);
-  // if (state.page === "signUp") renderSignUpPage(app);
+  if (state.page === "search") renderSearchPage();
+  if (state.page === "signUp") renderSignUpPage();
 
   if (state.modal === "signIn") renderSignModal();
   renderFooter();

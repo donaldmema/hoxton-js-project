@@ -6,9 +6,8 @@
       "location": "Stavoren",
       "image": "https://t-cf.bstatic.com/xdata/images/hotel/max1024x768/68265126.jpg?k=8fb2e8fc3d68dd312c4ae575d723b2283949656e80761d5acf436816a8999360&o=&hp=1",
       "price": 74.89,
-      "availableDates": ["27/07/2022",
-      "28/07/2022",
-      "29/07/2022"]
+      "availableDates": ["27/07/2022", "28/07/2022", "29/07/2022"],
+      "owner": "BradAKlima@armyspy.com"
     },
     {
       "id": 2,
@@ -16,9 +15,8 @@
       "location": "La Bachellerie",
       "image": "https://t-cf.bstatic.com/xdata/images/hotel/max1024x768/205199137.jpg?k=372b33cb05edb3946f7e957b44ee5ceef89a7350cb0a4d7c92ad01b4561a32aa&o=&hp=1",
       "price": 55,
-      "availableDates": ["27/07/2022",
-      "28/07/2022",
-      "29/07/2022"]
+      "availableDates": ["27/07/2022", "28/07/2022", "29/07/2022"],
+      "owner": "BradAKlima@armyspy.com"
     },
     {
       "id": 3,
@@ -26,9 +24,8 @@
       "location": "Antwerp",
       "image": "https://t-cf.bstatic.com/xdata/images/hotel/max1024x768/365059969.jpg?k=c9dddb12aac2e726b8ffb48b5de05bd19fa95da1147c4b1e7976ddd058c4488d&o=&hp=1",
       "price": 54,
-      "availableDates": ["27/07/2022",
-      "28/07/2022",
-      "29/07/2022"]
+      "availableDates": ["27/07/2022", "28/07/2022", "29/07/2022"],
+      "owner": "BradAKlima@armyspy.com"
     },
     {
       "id": 4,
@@ -36,9 +33,8 @@
       "location": "Vlore",
       "image": "https://t-cf.bstatic.com/xdata/images/hotel/max1024x768/364743881.jpg?k=7f153670de5e562d2901357d34469e0292cb95632e7ba578165aa7e213cd2966&o=&hp=1",
       "price": 14,
-      "availableDates": ["27/07/2022",
-      "28/07/2022",
-      "29/07/2022"]
+      "availableDates": ["27/07/2022", "28/07/2022", "29/07/2022"],
+      "owner": "BradAKlima@armyspy.com"
     },
     {
       "id": 5,
@@ -46,9 +42,8 @@
       "location": "Vlore",
       "image": "https://t-cf.bstatic.com/xdata/images/hotel/max1024x768/370851134.jpg?k=5a6c957c212f989d34b5df035a8fde7ce75503777ba3f214916244a4d6da4e9a&o=&hp=1",
       "price": 15,
-      "availableDates": ["27/07/2022",
-      "28/07/2022",
-      "29/07/2022"]
+      "availableDates": ["27/07/2022", "28/07/2022", "29/07/2022"],
+      "owner": "BradAKlima@armyspy.com"
     },
     {
       "id": 6,
@@ -56,9 +51,8 @@
       "location": "Vlore",
       "image": "https://t-cf.bstatic.com/xdata/images/hotel/max1024x768/303881496.jpg?k=6b38f203597134bb1649312aa738d7692f7f3187c1ed7cc284f9a1eeacc54594&o=&hp=1",
       "price": 16,
-      "availableDates": ["27/07/2022",
-      "28/07/2022",
-      "29/07/2022"]
+      "availableDates": ["27/07/2022", "28/07/2022", "29/07/2022"],
+      "owner": "BradAKlima@armyspy.com"
     },
     {
       "id": 7,
@@ -66,9 +60,8 @@
       "location": "Vlore",
       "image": "https://t-cf.bstatic.com/xdata/images/hotel/max1024x768/263851192.jpg?k=a178e562160fcc7c9034c4c03affe17ad2aa32d9c38a8985785991ca48c2cb8d&o=&hp=1",
       "price": 10,
-      "availableDates": ["27/07/2022",
-      "28/07/2022",
-      "29/07/2022"]
+      "availableDates": ["27/07/2022", "28/07/2022", "29/07/2022"],
+      "owner": "BradAKlima@armyspy.com"
     },
     {
       "id": 8,
@@ -76,9 +69,8 @@
       "location": "Vlore",
       "image": "https://t-cf.bstatic.com/xdata/images/hotel/max1024x768/282685885.jpg?k=df735ffdd69d6af123a0dbb501614194aa40d16212db2c49daf651c1769f5f2c&o=&hp=1",
       "price": 55,
-      "availableDates": ["27/07/2022",
-      "28/07/2022",
-      "29/07/2022"]
+      "availableDates": ["27/07/2022", "28/07/2022", "29/07/2022"],
+      "owner": "BradAKlima@armyspy.com"
     },
     {
       "id": 9,
@@ -86,9 +78,8 @@
       "location": "Ksamil",
       "image": "https://t-cf.bstatic.com/xdata/images/hotel/max1024x768/212123627.jpg?k=369f05724921a5f58972e207e71cc8b0e346e0c1e6d3aa1d0df778bd1414dd2f&o=&hp=1",
       "price": 28,
-      "availableDates": ["27/07/2022",
-      "28/07/2022",
-      "29/07/2022"]
+      "availableDates": ["27/07/2022", "28/07/2022", "29/07/2022"],
+      "owner": "BradAKlima@armyspy.com"
     },
     {
       "id": 10,
@@ -96,9 +87,8 @@
       "location": "Ksamil",
       "image": "https://t-cf.bstatic.com/xdata/images/hotel/max1024x768/200896066.jpg?k=946558167d0246c819052066edddd392a305cbad0b8f274a2956601831207c38&o=&hp=1",
       "price": 18,
-      "availableDates": ["27/07/2022",
-      "28/07/2022",
-      "29/07/2022"]
+      "availableDates": ["27/07/2022", "28/07/2022", "29/07/2022"],
+      "owner": "BradAKlima@armyspy.com"
     },
     {
       "id": 11,
@@ -106,9 +96,8 @@
       "location": "Ksamil",
       "image": "https://t-cf.bstatic.com/xdata/images/hotel/max1024x768/306958976.jpg?k=956e3972089e5f1f093a3b744200555f7f5f27d732b96e69d83df9f41565cdfb&o=&hp=1",
       "price": 31,
-      "availableDates": ["27/07/2022",
-      "28/07/2022",
-      "29/07/2022"]
+      "availableDates": ["27/07/2022", "28/07/2022", "29/07/2022"],
+      "owner": "BradAKlima@armyspy.com"
     },
     {
       "id": 12,
@@ -116,9 +105,8 @@
       "location": "Ksamil",
       "image": "https://t-cf.bstatic.com/xdata/images/hotel/max1024x768/303574182.jpg?k=044501dbce0974e524ee1c7d30db54b6e86dc0d2272c6ba08f4508d69b75b3f2&o=&hp=1",
       "price": 33,
-      "availableDates": ["27/07/2022",
-      "28/07/2022",
-      "29/07/2022"]
+      "availableDates": ["27/07/2022", "28/07/2022", "29/07/2022"],
+      "owner": "BradAKlima@armyspy.com"
     },
     {
       "id": 13,
@@ -126,9 +114,8 @@
       "location": "Ksamil",
       "image": "https://t-cf.bstatic.com/xdata/images/hotel/max1024x768/364285429.jpg?k=bcf6cc0a45679cdc035e3a87711f01ec441331f6eabbb458ab054efec4f68580&o=&hp=1",
       "price": 27,
-      "availableDates": ["27/07/2022",
-      "28/07/2022",
-      "29/07/2022"]
+      "availableDates": ["27/07/2022", "28/07/2022", "29/07/2022"],
+      "owner": "BradAKlima@armyspy.com"
     },
     {
       "id": 14,
@@ -136,9 +123,8 @@
       "location": "Durres",
       "image": "https://t-cf.bstatic.com/xdata/images/hotel/max1024x768/306945499.jpg?k=cd0bebc85f090aaa16d42ddf3a8cc0eb5fdb58246ee4496e7fd001d422faff28&o=&hp=1",
       "price": 22,
-      "availableDates": ["27/07/2022",
-      "28/07/2022",
-      "29/07/2022"]
+      "availableDates": ["27/07/2022", "28/07/2022", "29/07/2022"],
+      "owner": "BradAKlima@armyspy.com"
     },
     {
       "id": 15,
@@ -146,9 +132,8 @@
       "location": "Durres",
       "image": "https://t-cf.bstatic.com/xdata/images/hotel/max1024x768/147166056.jpg?k=1d56ebe943f72036ac1e234ab42640847854c343f84ca4e242f80351e177d730&o=&hp=1",
       "price": 13,
-      "availableDates": ["27/07/2022",
-      "28/07/2022",
-      "29/07/2022"]
+      "availableDates": ["27/07/2022", "28/07/2022", "29/07/2022"],
+      "owner": "BradAKlima@armyspy.com"
     },
     {
       "id": 16,
@@ -156,9 +141,8 @@
       "location": "Durres",
       "image": "https://t-cf.bstatic.com/xdata/images/hotel/max1024x768/367178856.jpg?k=e4cd6562a22da69d21ab992ccdbdd67637d0f3a3bc23cfe94d93a91fc01c73d5&o=&hp=1",
       "price": 19,
-      "availableDates": ["27/07/2022",
-      "28/07/2022",
-      "29/07/2022"]
+      "availableDates": ["27/07/2022", "28/07/2022", "29/07/2022"],
+      "owner": "BradAKlima@armyspy.com"
     },
     {
       "id": 17,
@@ -166,9 +150,8 @@
       "location": "Durres",
       "image": "https://t-cf.bstatic.com/xdata/images/hotel/max1024x768/222511510.jpg?k=6afa6a817bdd20dabf874915d4b35085f0e4a2af2e17ae1016b27a0f946c3e72&o=&hp=1",
       "price": 14.5,
-      "availableDates": ["27/07/2022",
-      "28/07/2022",
-      "29/07/2022"]
+      "availableDates": ["27/07/2022", "28/07/2022", "29/07/2022"],
+      "owner": "BradAKlima@armyspy.com"
     },
     {
       "id": 18,
@@ -176,9 +159,8 @@
       "location": "Durres",
       "image": "https://t-cf.bstatic.com/xdata/images/hotel/max1024x768/333094685.jpg?k=0ec77325a6785611e7745a8903545f96a079af372782303074eace00e1b0dae8&o=&hp=1",
       "price": 16,
-      "availableDates": ["27/07/2022",
-      "28/07/2022",
-      "29/07/2022"]
+      "availableDates": ["27/07/2022", "28/07/2022", "29/07/2022"],
+      "owner": "BradAKlima@armyspy.com"
     }
   ],
   "users": [

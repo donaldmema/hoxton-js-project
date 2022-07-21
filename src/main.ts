@@ -265,6 +265,8 @@ function renderFooter() {
   let sidebarText2PEl = document.createElement("h4");
   sidebarText2PEl.textContent = "Stay connected";
 
+  sidebarSocialsEl.append(sidebarText2PEl);
+
   let socialsContainer = document.createElement("div");
   socialsContainer.className = "socials-container";
 
@@ -419,8 +421,7 @@ function renderFooter() {
   legalNoteAEl5.innerHTML = "<li>FAQ</li>";
 
   let copyrightPEl = document.createElement("p");
-  copyrightPEl.textContent =
-    "&copy; 2022 Looking.com LLC. All rights reserved.";
+  copyrightPEl.textContent = "© 2022 Looking.com LLC. All rights reserved.";
 
   legalNotesUl.append(
     legalNoteAEl1,

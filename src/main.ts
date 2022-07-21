@@ -239,6 +239,7 @@ function renderSignModal(app: Element) {
   passwordEl.placeholder = "Enter your password";
   passwordEl.required = true;
 
+  formEl.append(emailEl, passwordEl)
   containerEl.append(closeButton, titleEl, formEl);
   wrapperEl.append(containerEl);
   app.append(wrapperEl);

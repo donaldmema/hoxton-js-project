@@ -77,23 +77,7 @@ function renderHeader() {
     headerLogoutBtn.className = "sign-btn";
     headerLogoutBtn.textContent = "LOGOUT";
 
-<<<<<<< HEAD
-    let signInButton = document.createElement("button");
-    signInButton.textContent = "Sign In";
-    signInButton.addEventListener("click", function () {
-      state.modal = "signIn";
-      render();
-    });
-
-    headerUserSection.append(
-      headerUserImg,
-      headerUserName,
-      headerLogoutBtn,
-      signInButton
-    );
-=======
     headerUserSection.append(headerUserImg, headerUserName, headerLogoutBtn);
->>>>>>> 2a7e2de8470a4f7d068b341813c8100ec6246287
     headerEl.append(headerTitleEl, headerUserSection);
     app.append(headerEl);
   }
@@ -212,6 +196,10 @@ function renderMainPage() {
 
   app.append(mainEl);
 }
+
+// renderSignUpPage() {
+
+// }
 
 function renderSignModal() {
   let wrapperEl = document.createElement("div");
@@ -415,8 +403,6 @@ function renderFooter() {
     footerLink6,
     footerLink7
   );
-
-  render();
 }
 
 function render() {
@@ -424,13 +410,14 @@ function render() {
   app.textContent = "";
 
   renderHeader();
-  renderFooter();
-
+  
   if (state.page === "home") renderMainPage();
-  if (state.page === "search") renderSearchPage(app);
-  if (state.page === "signUp") renderSignUpPage(app);
+  if (state.page === "search") renderSearchPage();
+  if (state.page === "signUp") renderSignUpPage();
 
   if (state.modal === "signIn") renderSignModal();
+
+  renderFooter()
 }
 
 render();

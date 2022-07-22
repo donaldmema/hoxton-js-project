@@ -3,7 +3,7 @@ import "./style.css";
 const app = document.querySelector<HTMLDivElement>("#app")!;
 // Main page✅ > Search Results Page > Sign Up Page > Sign in window
 
-type property = {
+type Property = {
   id: number;
   propertyName: string;
   location: string;
@@ -24,27 +24,21 @@ type user = {
 };
 
 type State = {
-  properties: property[];
+  properties: Property[];
   page: "home" | "search" | "signUp";
   modal: "signIn" | "";
   user: null | {};
+  locationSearch: string;
+  stayingPeriod: string;
 };
 
 let state: State = {
   page: "home",
   user: null,
   modal: "",
-  properties: [
-    {
-      id: 1,
-      propertyName: "John's Guesthouse",
-      location: "Tirana",
-      image: "image.jpg",
-      price: 15.99,
-      availableDates: [],
-      owner: "BradAKlima@armyspy.com",
-    },
-  ],
+  properties: [],
+  locationSearch: "",
+  stayingPeriod: "",
 };
 
 function signUp({ firstName, lastName, phone, email, password, type }) {
@@ -73,6 +67,21 @@ function signIn({ email, password }) {
       } else {
         alert("Invalid username/password");
       }
+    });
+}
+
+function getProperties() {
+  if (state.locationSearch === "") return;
+  fetch(`http://localhost:3010/properties`)
+    .then((response) => response.json())
+    .then((properties: Property[]) => {
+      state.properties = properties.filter((properties) =>
+        properties.location
+          .toLowerCase()
+          .includes(state.locationSearch.toLowerCase())
+      );
+      state.page = "search";
+      render();
     });
 }
 
@@ -121,10 +130,10 @@ function renderHeader() {
     let headerLogoutBtn = document.createElement("button");
     headerLogoutBtn.className = "sign-btn";
     headerLogoutBtn.textContent = "LOGOUT";
-    headerLogoutBtn.addEventListener('click', function () {
-      state.user = null
-      render ()
-    })
+    headerLogoutBtn.addEventListener("click", function () {
+      state.user = null;
+      render();
+    });
 
     headerUserSection.append(headerUserImg, headerUserName, headerLogoutBtn);
     headerEl.append(headerTitleEl, headerUserSection);
@@ -154,6 +163,10 @@ function renderMainPage() {
 
   let renterSectionSearchBtn = document.createElement("button");
   renterSectionSearchBtn.textContent = "SEARCH";
+  renterSectionSearchBtn.addEventListener("click", function () {
+    state.locationSearch = renterSectionSearchInput.value;
+    getProperties();
+  });
 
   renterSectionSearch.append(renterSectionSearchInput, renterSectionSearchBtn);
   renterSection.append(
@@ -433,6 +446,261 @@ function renderSignUpPage() {
   );
   formEl.append(singUpContainer);
   app.append(formEl);
+}
+
+function renderSearchPage() {
+  let searchPageMainEl = document.createElement("main");
+  searchPageMainEl.className = "search-page__main";
+  let sidebarDivEl = document.createElement("div");
+  sidebarDivEl.className = "search-page__sidebar-div";
+
+  let sidebarFilterSection = document.createElement("aside");
+  sidebarFilterSection.className = "sidebar-filter-section";
+
+  let searchOptionsBox = document.createElement("div");
+  searchOptionsBox.className = "search-options-box";
+
+  let searchFormEl = document.createElement("form");
+  searchFormEl.className = "search-form";
+  searchFormEl.addEventListener("submit", function (e) {
+    e.preventDefault();
+    state.locationSearch = searchInputField.value;
+    state.stayingPeriod = searchFormStayingPeriod.value;
+    getProperties();
+  });
+
+  let searchFormTitleEl = document.createElement("h2");
+  searchFormTitleEl.textContent = "Search";
+
+  let searchFormLocationEl = document.createElement("label");
+  searchFormLocationEl.innerHTML = `Location name:
+             <input
+               type="text"
+               placeholder="Where are you going?"
+               name="location"
+               required /> `;
+  let searchInputField = searchFormLocationEl.querySelector("input")!;
+  searchInputField.value = state.locationSearch;
+
+  let searchFormDateEl = document.createElement("label");
+  searchFormDateEl.innerHTML = `Check-in month:
+  <select name="month" id="month" required>
+    <option value="">Select</option>
+    <option value="January">January</option>
+    <option value="February">February</option>
+    <option value="March">March</option>
+    <option value="April">April</option>
+    <option value="May">May</option>
+    <option value="June">June</option>
+    <option value="July">July</option>
+    <option value="August">August</option>
+    <option value="September">September</option>
+    <option value="October">October</option>
+    <option value="November">November</option>
+    <option value="December">December</option>
+  </select>`;
+
+  let searchFormStayingPeriodEl = document.createElement("label");
+  searchFormStayingPeriodEl.innerHTML = `Period of staying:
+  <select name="staying-period" id="staying-period" required>
+    <option value="">Select</option>
+    <option value="1">1 month</option>
+    <option value="2">2 months</option>
+    <option value="3">3 months</option>
+    <option value="4">4 months</option>
+    <option value="5">5 months</option>
+    <option value="6">6 months</option>
+    <option value="7">7 months</option>
+    <option value="8">8 months</option>
+    <option value="9">9 months</option>
+    <option value="10">10 months</option>
+    <option value="11">11 months</option>
+    <option value="12">12 months</option>
+  </select>`;
+
+  let searchFormStayingPeriod =
+    searchFormStayingPeriodEl.querySelector<HTMLSelectElement>(
+      "#staying-period"
+    )!;
+
+  let searchFormBtn = document.createElement("button");
+  searchFormBtn.type = "submit";
+  searchFormBtn.textContent = "SEARCH";
+
+  searchFormEl.append(
+    searchFormTitleEl,
+    searchFormLocationEl,
+    searchFormDateEl,
+    searchFormStayingPeriodEl,
+    searchFormBtn
+  );
+
+  searchOptionsBox.append(searchFormEl);
+
+  let filterOptionsBox = document.createElement("div");
+  filterOptionsBox.className = "filter-options-box";
+
+  let filterOptionsTitleEl = document.createElement("h2");
+  filterOptionsTitleEl.textContent = "Filter by:";
+
+  let filterOptionsHrEl = document.createElement("hr");
+
+  let filterOptionsItemTitleEl = document.createElement("h3");
+  filterOptionsItemTitleEl.textContent = "Your Budget (per month)";
+
+  let filterBudgetBtnsEl = document.createElement("div");
+  filterBudgetBtnsEl.className = "filter-budget-btns";
+
+  let filterBudgetOption1El = document.createElement("label");
+  filterBudgetOption1El.htmlFor = "budgetChoice1";
+  filterBudgetOption1El.innerHTML = `<input
+  type="radio"
+  id="budgetChoice1"
+  name="budget"
+  value="150"
+/>
+€0 - €150`;
+
+  let filterBudgetOption2El = document.createElement("label");
+  filterBudgetOption2El.htmlFor = "budgetChoice2";
+  filterBudgetOption2El.innerHTML = `
+  <input
+                  type="radio"
+                  id="budgetChoice2"
+                  name="budget"
+                  value="250"
+                />
+                €150 - €250`;
+
+  let filterBudgetOption3El = document.createElement("label");
+  filterBudgetOption3El.htmlFor = "budgetChoice3";
+  filterBudgetOption3El.innerHTML = `<input
+  type="radio"
+  id="budgetChoice3"
+  name="budget"
+  value="350"
+/>
+€250 - €350`;
+
+  let filterBudgetOption4El = document.createElement("label");
+  filterBudgetOption4El.htmlFor = "budgetChoice4";
+  filterBudgetOption4El.innerHTML = `<input
+  type="radio"
+  id="budgetChoice4"
+  name="budget"
+  value="100000"
+  checked
+/>
+Show all`;
+
+  filterBudgetBtnsEl.append(
+    filterBudgetOption1El,
+    filterBudgetOption2El,
+    filterBudgetOption3El,
+    filterBudgetOption4El
+  );
+
+  filterOptionsBox.append(
+    filterOptionsTitleEl,
+    filterOptionsHrEl,
+    filterOptionsItemTitleEl,
+    filterBudgetBtnsEl
+  );
+
+  sidebarFilterSection.append(searchOptionsBox, filterOptionsBox);
+  sidebarDivEl.append(sidebarFilterSection);
+
+  let propertiesListSection = document.createElement("section");
+  propertiesListSection.className = "properties-list-section";
+
+  let propertiesListHeading = document.createElement("div");
+  propertiesListHeading.className = "properties-list-heading";
+
+  let propertiesListHeadingH2El = document.createElement("h2");
+  propertiesListHeadingH2El.textContent = `${state.locationSearch}: ${state.properties.length} properties found`;
+
+  let propertiesListHeadingSortingEl = document.createElement("select");
+  propertiesListHeadingSortingEl.name = "sorting";
+  propertiesListHeadingSortingEl.id = "sorting";
+  propertiesListHeadingSortingEl.required = true;
+  propertiesListHeadingSortingEl.innerHTML = `<option value="">Sort by: Default</option>
+  <option value="price-incremental">
+    Sort by: Price(lowest first)
+  </option>
+  <option value="price-decremental">
+    Sort by: Price(highest first)
+  </option>
+  <option value="alphabetical">Sort by: Alphabetical Order</option>`;
+
+  propertiesListHeading.append(
+    propertiesListHeadingH2El,
+    propertiesListHeadingSortingEl
+  );
+
+  let propertiesListItems = document.createElement("div");
+  propertiesListItems.className = "properties-list-items";
+  console.log(state.properties);
+  for (let property of state.properties) {
+    let propertyItemCard = document.createElement("div");
+    propertyItemCard.className = "property-item-card";
+
+    let propertyItemCardImg = document.createElement("img");
+    propertyItemCardImg.src = property.image;
+    propertyItemCardImg.alt = "property image";
+
+    let propertyItemCardInfo = document.createElement("div");
+    propertyItemCardInfo.className = "property-item-card__info";
+
+    let propertyItemUpperCardInfo = document.createElement("div");
+    propertyItemUpperCardInfo.className = "card__info__upper";
+
+    let propertyItemUpperCardInfoTitle = document.createElement("h3");
+    propertyItemUpperCardInfoTitle.textContent = property.propertyName;
+
+    let propertyItemUpperCardInfoLocation = document.createElement("p");
+    propertyItemUpperCardInfoLocation.innerHTML = `<span>Location: </span> ${property.location}`;
+
+    propertyItemUpperCardInfo.append(
+      propertyItemUpperCardInfoTitle,
+      propertyItemUpperCardInfoLocation
+    );
+
+    let propertyItemBottomCardInfo = document.createElement("div");
+    propertyItemBottomCardInfo.className = "card__info__bottom";
+
+    let propertyItemBottomCardInfoPeriod = document.createElement("p");
+    propertyItemBottomCardInfoPeriod.className = "months-to-pay";
+    propertyItemBottomCardInfoPeriod.textContent = `${state.stayingPeriod} months`;
+
+    let propertyItemBottomCardInfoPrice = document.createElement("p");
+    propertyItemBottomCardInfoPrice.textContent = `€${
+      property.price * Number(state.stayingPeriod)
+    } Total`;
+
+    let propertyItemBottomCardInfoBtn = document.createElement("button");
+    propertyItemBottomCardInfoBtn.textContent = "Make reservation >";
+
+    propertyItemBottomCardInfo.append(
+      propertyItemBottomCardInfoPeriod,
+      propertyItemBottomCardInfoPrice,
+      propertyItemBottomCardInfoBtn
+    );
+
+    propertyItemCardInfo.append(
+      propertyItemUpperCardInfo,
+      propertyItemBottomCardInfo
+    );
+
+    propertyItemCard.append(propertyItemCardImg, propertyItemCardInfo);
+
+    propertiesListItems.append(propertyItemCard);
+  }
+
+  propertiesListSection.append(propertiesListHeading, propertiesListItems);
+
+  searchPageMainEl.append(sidebarDivEl, propertiesListSection);
+
+  app.append(searchPageMainEl);
 }
 
 function renderSignModal() {

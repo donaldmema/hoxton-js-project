@@ -13,18 +13,28 @@ type property = {
   owner: string | "";
 };
 
+type user = {
+  id: number;
+  firstName: string;
+  lastName: string;
+  phone: string;
+  email: string;
+  password: string;
+  type: "landlord" | "renter";
+};
+
 type State = {
-  propreties: property[];
+  properties: property[];
   page: "home" | "search" | "signUp";
   modal: "signIn" | "";
-  user: "landlord" | "renter" | null;
+  user: null | {};
 };
 
 let state: State = {
   page: "home",
   user: null,
   modal: "",
-  propreties: [
+  properties: [
     {
       id: 1,
       propertyName: "John's Guesthouse",
@@ -36,6 +46,35 @@ let state: State = {
     },
   ],
 };
+
+function signUp({ firstName, lastName, phone, email, password, type }) {
+  fetch("http://localhost:3010/users", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ firstName, lastName, phone, email, password, type }),
+  })
+    .then((resp) => resp.json())
+    .then((data) => {
+      console.log(data);
+    });
+}
+
+function signIn({ email, password }) {
+  fetch("http://localhost:3010/users")
+    .then((resp) => resp.json())
+    .then((users) => {
+      let match = users.find((user) => user.email === email);
+      if (match && match.password === password) {
+        state.user = match;
+        state.modal = "";
+        render();
+      } else {
+        alert("Invalid username/password");
+      }
+    });
+}
 
 function renderHeader() {
   let headerEl = document.createElement("header");
@@ -50,7 +89,7 @@ function renderHeader() {
 
     let headerLoginBtn = document.createElement("button");
     headerLoginBtn.className = "sign-btn";
-    headerLoginBtn.textContent = "SIGN IN";
+    headerLoginBtn.textContent = "Sign In";
     headerLoginBtn.addEventListener("click", function () {
       state.modal = "signIn";
       render();
@@ -58,7 +97,11 @@ function renderHeader() {
 
     let headerSignUpBtn = document.createElement("button");
     headerSignUpBtn.className = "sign-btn";
-    headerSignUpBtn.textContent = "SIGN UP";
+    headerSignUpBtn.textContent = "Sign Up";
+    headerSignUpBtn.addEventListener("click", function () {
+      state.page = "signUp";
+      render();
+    });
 
     headerLoginSection.append(headerLoginBtn, headerSignUpBtn);
     headerEl.append(headerTitleEl, headerLoginSection);
@@ -73,11 +116,15 @@ function renderHeader() {
     headerUserImg.width = 30;
 
     let headerUserName = document.createElement("p");
-    headerUserName.textContent = "state.user.name";
+    headerUserName.textContent = state.user.firstName;
 
     let headerLogoutBtn = document.createElement("button");
     headerLogoutBtn.className = "sign-btn";
     headerLogoutBtn.textContent = "LOGOUT";
+    headerLogoutBtn.addEventListener('click', function () {
+      state.user = null
+      render ()
+    })
 
     headerUserSection.append(headerUserImg, headerUserName, headerLogoutBtn);
     headerEl.append(headerTitleEl, headerUserSection);
@@ -199,16 +246,202 @@ function renderMainPage() {
   app.append(mainEl);
 }
 
-// renderSignUpPage() {
+function renderSignUpPage() {
+  let formEl = document.createElement("form");
+  formEl.addEventListener("submit", function (event) {
+    event.preventDefault();
+    const checkedRadioInput = document.querySelector(
+      'input[name="radio-input"]:checked'
+    );
+    const type = checkedRadioInput.value;
+    signUp({
+      firstName: firstNameInput.value,
+      lastName: lastNameInput.value,
+      phone: phoneNrInput.value,
+      email: inputEl.value,
+      password: inputPass.value,
+      type: type,
+    });
+  });
 
-// }
+  let singUpContainer = document.createElement("div");
+  singUpContainer.id = "signup";
+  singUpContainer.className = "form-container";
+
+  let titleSignUp = document.createElement("h2");
+  titleSignUp.className = "header-title-signUp";
+  titleSignUp.textContent = "Sign Up";
+
+  let hrEl1 = document.createElement("hr");
+
+  let emailEl = document.createElement("div");
+  emailEl.id = "email";
+  emailEl.className = "form-group";
+
+  let labelEl = document.createElement("label");
+  labelEl.innerHTML = "email-input";
+  labelEl.textContent = "Enter Your Email";
+
+  let inputEl = document.createElement("input");
+  inputEl.id = "email-input";
+  inputEl.className = "form-control";
+  inputEl.type = "text";
+
+  emailEl.append(labelEl, inputEl);
+
+  let emailVerification = document.createElement("div");
+  emailVerification.id = "email-verification";
+  emailVerification.className = "form-group";
+
+  let labelEl1 = document.createElement("label");
+  labelEl1.innerHTML = "email-verification";
+  labelEl1.textContent = "Confirm Your Email";
+
+  let inputEl1 = document.createElement("input");
+  inputEl1.id = "email-verification";
+  inputEl1.className = "form-control";
+  inputEl1.type = "text";
+
+  emailVerification.append(labelEl1, inputEl1);
+
+  let passEl = document.createElement("div");
+  passEl.id = "password";
+  passEl.className = "form-group";
+
+  let requirementsP = document.createElement("p");
+  requirementsP.className = "password-requirements";
+  requirementsP.textContent =
+    "Password cannot contain spaces. Password must be at least 8 characteres. It must contain at least 1 digit, 1 lower-case letter and 1 upper-case letter. You can use the following symbols: !, @, #, $, &.";
+
+  let labelPass = document.createElement("label");
+  labelPass.innerHTML = "password-input";
+  labelPass.textContent = "Create A Password";
+
+  let inputPass = document.createElement("input");
+  inputPass.id = "password-input";
+  inputPass.className = "form-control";
+  inputPass.type = "password";
+
+  passEl.append(labelPass, inputPass, requirementsP);
+
+  let passVerification = document.createElement("div");
+  passVerification.id = "password-verification";
+  passVerification.className = "form-group";
+
+  let labelPass2 = document.createElement("label");
+  labelPass2.innerHTML = "password-verification";
+  labelPass2.textContent = "Confirm Your Password";
+
+  let inputPass2 = document.createElement("input");
+  inputPass2.id = "password-verification";
+  inputPass2.className = "form-control";
+  inputPass2.type = "password";
+
+  passVerification.append(labelPass2, inputPass2);
+
+  let firstName = document.createElement("div");
+  firstName.className = "form-group";
+  firstName.id = "first-name";
+
+  let firstNameLabel = document.createElement("label");
+  firstNameLabel.innerHTML = "firstName-input";
+  firstNameLabel.textContent = "What Is Your Name?";
+
+  let firstNameInput = document.createElement("input");
+  firstNameInput.id = "firstName-input";
+  firstNameInput.className = "form-control";
+  firstNameInput.type = "text";
+
+  firstName.append(firstNameLabel, firstNameInput);
+
+  let lastName = document.createElement("div");
+  lastName.className = "form-group";
+  lastName.id = "last-name";
+
+  let lastNameLabel = document.createElement("label");
+  lastNameLabel.innerHTML = "lastName-input";
+  lastNameLabel.textContent = "What Is Your Last Name?";
+
+  let lastNameInput = document.createElement("input");
+  lastNameInput.id = "lastName-input";
+  lastNameInput.className = "form-control";
+  lastNameInput.type = "text";
+
+  lastName.append(lastNameLabel, lastNameInput);
+
+  let phoneNr = document.createElement("div");
+  phoneNr.className = "form-group";
+  phoneNr.id = "phone-nr";
+
+  let phoneNrLabel = document.createElement("label");
+  phoneNrLabel.innerHTML = "phoneNr-input";
+  phoneNrLabel.textContent = "Add Your Phone Nr.";
+
+  let phoneNrInput = document.createElement("input");
+  phoneNrInput.id = "phoneNr-input";
+  phoneNrInput.className = "form-control";
+  phoneNrInput.type = "text";
+
+  phoneNr.append(phoneNrLabel, phoneNrInput);
+
+  let ownerType = document.createElement("div");
+  ownerType.className = "form-group";
+  ownerType.id = "owner-type";
+
+  let landlordLabel = document.createElement("label");
+  landlordLabel.innerHTML = "landlord-input";
+  landlordLabel.textContent = "Landlord";
+
+  let landlordInput = document.createElement("input");
+  landlordInput.id = "landlord-input";
+  landlordInput.name = "radio-input";
+  landlordInput.className = "radio-input";
+  landlordInput.type = "radio";
+  landlordInput.value = "landlord";
+
+  let renterLabel = document.createElement("label");
+  renterLabel.innerHTML = "renter-input";
+  renterLabel.textContent = "Renter";
+
+  let renterInput = document.createElement("input");
+  renterInput.id = "renter-input";
+  renterInput.name = "radio-input";
+  renterInput.className = "radio-input";
+  renterInput.type = "radio";
+  renterInput.value = "renter";
+
+  ownerType.append(landlordLabel, landlordInput, renterLabel, renterInput);
+
+  let nextBtn = document.createElement("button");
+  nextBtn.id = "next-button";
+  nextBtn.type = "submit";
+  nextBtn.classList.add("btn", "btn-primary");
+  nextBtn.textContent = "Next";
+
+  singUpContainer.append(
+    titleSignUp,
+    hrEl1,
+    firstName,
+    lastName,
+    phoneNr,
+    emailEl,
+    emailVerification,
+    passEl,
+    passVerification,
+    ownerType,
+    nextBtn
+  );
+  formEl.append(singUpContainer);
+  app.append(formEl);
+}
 
 function renderSignModal() {
   let wrapperEl = document.createElement("div");
   wrapperEl.className = "modal-wrapper";
 
-  let containerEl = document.createElement("div");
-  containerEl.className = "modal-container";
+  let containerDiv = document.createElement("div");
+  containerDiv.className = "form-container";
+  containerDiv.id = "login";
 
   let closeButton = document.createElement("button");
   closeButton.textContent = "X";
@@ -219,29 +452,56 @@ function renderSignModal() {
   });
 
   let titleEl = document.createElement("h2");
+  titleEl.className = "header-title";
   titleEl.textContent = "Sign In";
+
+  let hrEl = document.createElement("hr");
 
   let formEl = document.createElement("form");
   formEl.addEventListener("submit", function (event) {
     event.preventDefault();
 
-    state.modal = "";
-    render();
+    signIn({ email: inputEl.value, password: inputEl2.value });
   });
 
-  let emailEl = document.createElement("input");
-  emailEl.type = "email";
-  emailEl.placeholder = "Enter your email";
-  emailEl.required = true;
+  let emailEl = document.createElement("div");
+  emailEl.id = "email";
+  emailEl.className = "form-group";
 
-  let passwordEl = document.createElement("input");
-  passwordEl.type = "password";
-  passwordEl.placeholder = "Enter your password";
-  passwordEl.required = true;
+  let labelEl = document.createElement("label");
+  labelEl.innerHTML = "email-input";
+  labelEl.textContent = "Enter Your Email";
 
-  formEl.append(emailEl, passwordEl);
-  containerEl.append(closeButton, titleEl, formEl);
-  wrapperEl.append(containerEl);
+  let inputEl = document.createElement("input");
+  inputEl.id = "emai-input";
+  inputEl.className = "form-control";
+  inputEl.type = "text";
+
+  emailEl.append(labelEl, inputEl);
+
+  let passEl = document.createElement("div");
+  passEl.id = "password";
+  passEl.className = "form-group";
+
+  let labelEl2 = document.createElement("label");
+  labelEl2.innerHTML = "password-input";
+  labelEl2.textContent = "Enter Your Password";
+
+  let inputEl2 = document.createElement("input");
+  inputEl2.id = "password-input";
+  inputEl2.className = "form-control";
+  inputEl2.type = "password";
+
+  passEl.append(labelEl2, inputEl2);
+
+  let nextBtn = document.createElement("button");
+  nextBtn.id = "next-button";
+  nextBtn.classList.add("btn", "btn-primary");
+  nextBtn.textContent = "Next";
+
+  formEl.append(emailEl, passEl, nextBtn);
+  containerDiv.append(closeButton, titleEl, hrEl, formEl);
+  wrapperEl.append(containerDiv);
   app.append(wrapperEl);
 }
 
@@ -449,14 +709,14 @@ function render() {
   app.textContent = "";
 
   renderHeader();
-  
+
   if (state.page === "home") renderMainPage();
   if (state.page === "search") renderSearchPage();
   if (state.page === "signUp") renderSignUpPage();
 
   if (state.modal === "signIn") renderSignModal();
 
-  renderFooter()
+  renderFooter();
 }
 
 render();

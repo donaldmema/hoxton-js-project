@@ -261,8 +261,8 @@ function renderMainPage() {
 
 function renderSignUpPage() {
   let formEl = document.createElement("form");
-  formEl.addEventListener("submit", function (event) {
-    event.preventDefault();
+  formEl.addEventListener("submit", function () {
+    // event.preventDefault();
     const checkedRadioInput = document.querySelector(
       'input[name="radio-input"]:checked'
     );
